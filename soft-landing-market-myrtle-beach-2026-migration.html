@@ -1,0 +1,189 @@
+<!-- Interactive Infographic: Myrtle Beach 2026 Soft Landing Market (Carolina Crafted Homes Theme) -->
+<style>
+  :root {
+    --cch-navy: #2F4A68;
+    --cch-bluegray: #6C7E8F;
+    --cch-lightgray: #F2F4F6;
+    --white: #FFFFFF;
+  }
+
+  .infographic-container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    font-family: system-ui, sans-serif;
+    border: 1px solid rgba(47,74,104,0.12);
+  }
+
+  .info-title {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 20px;
+    color: var(--cch-navy);
+    font-weight: 700;
+  }
+
+  .info-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cch-lightgray);
+  }
+
+  .info-tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.25s;
+    color: var(--cch-bluegray);
+  }
+
+  .info-tab:hover {
+    background: rgba(47,74,104,0.08);
+  }
+
+  .info-tab.active {
+    border-bottom: 3px solid var(--cch-navy);
+    color: var(--cch-navy);
+  }
+
+  .info-content {
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+
+  .info-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .info-block {
+    background: var(--cch-lightgray);
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 10px;
+    border-left: 6px solid var(--cch-navy);
+  }
+
+  .info-block h3 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    color: var(--cch-navy);
+    font-weight: 600;
+  }
+
+  .info-block ul {
+    padding-left: 20px;
+    margin: 0;
+    color: var(--cch-bluegray);
+  }
+
+  .info-block ul li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<div class="infographic-container">
+  <h2 class="info-title">Why Myrtle Beach Is a 2026 Soft Landing Market</h2>
+
+  <div class="info-tabs">
+    <div class="info-tab active" data-tab="tab1">Inbound Migration</div>
+    <div class="info-tab" data-tab="tab2">Affordability</div>
+    <div class="info-tab" data-tab="tab3">Lifestyle & Access</div>
+    <div class="info-tab" data-tab="tab4">2026 Outlook</div>
+  </div>
+
+  <!-- TAB 1 -->
+  <div id="tab1" class="info-content active">
+    <div class="info-block">
+      <h3>Top Inbound States → Myrtle Beach</h3>
+      <ul>
+        <li>North Carolina → Strong regional relocators</li>
+        <li>New York & New Jersey → Tax + cost-of-living escape</li>
+        <li>Ohio & Pennsylvania → Retiree & snowbird movement</li>
+        <li>Maryland & Virginia → Federal/remote worker migration</li>
+      </ul>
+    </div>
+    <div class="info-block">
+      <h3>Why They’re Moving</h3>
+      <ul>
+        <li>Lower cost of living</li>
+        <li>New construction availability</li>
+        <li>Predictable home price growth</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div id="tab2" class="info-content">
+    <div class="info-block">
+      <h3>Affordability Advantages</h3>
+      <ul>
+        <li>Property taxes far lower than FL & NC coastal markets</li>
+        <li>New construction in Carolina Forest, Longs & Little River</li>
+        <li>Below-average insurance costs vs. Gulf Coast</li>
+      </ul>
+    </div>
+    <div class="info-block">
+      <h3>Price Stability</h3>
+      <ul>
+        <li>Gradual appreciation, not boom–bust cycles</li>
+        <li>Inventory remains healthy for 2026 relocators</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div id="tab3" class="info-content">
+    <div class="info-block">
+      <h3>Lifestyle Wins</h3>
+      <ul>
+        <li>Beaches, golf, outdoor recreation</li>
+        <li>Walkable hubs like Market Common</li>
+        <li>Expanding shopping, dining & entertainment</li>
+      </ul>
+    </div>
+    <div class="info-block">
+      <h3>Access & Convenience</h3>
+      <ul>
+        <li>Fast routes via Hwy 31 & 501</li>
+        <li>Growing healthcare campuses</li>
+        <li>Myrtle Beach International Airport expansion</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 4 -->
+  <div id="tab4" class="info-content">
+    <div class="info-block">
+      <h3>2026 Market Outlook</h3>
+      <ul>
+        <li>Steady inbound migration projected</li>
+        <li>Balanced appreciation (2–5%) expected</li>
+        <li>New builds remain a core driver of value</li>
+        <li>Strong demand from retirees + remote workers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.info-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.info-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.info-content').forEach(c => c.classList.remove('active'));
+      
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>

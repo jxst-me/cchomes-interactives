@@ -1,0 +1,306 @@
+<!-- Myrtle Beach Inbound Migration 2025 – Text-Based Interactive Infographic (Corrected: Takeaway Removed) -->
+<div class="mb-migration-widget">
+  <h2>Where Are People Moving From? (Myrtle Beach 2025)</h2>
+  <p class="mb-subtitle">
+    Tap a state to see why residents are relocating to the Grand Strand.
+  </p>
+
+  <!-- State Selector -->
+  <div class="mb-section">
+    <h3>Top Inbound States</h3>
+    <div class="mb-state-buttons">
+      <button data-state="NC">North Carolina</button>
+      <button data-state="NY">New York</button>
+      <button data-state="NJ">New Jersey</button>
+      <button data-state="PA">Pennsylvania</button>
+      <button data-state="VA">Virginia</button>
+      <button data-state="OH">Ohio & Midwest</button>
+    </div>
+    <div id="mb-state-panel" class="mb-panel">
+      <p class="mb-placeholder">Select a state to view details.</p>
+    </div>
+  </div>
+
+  <!-- Buyer Profiles -->
+  <div class="mb-section">
+    <h3>Who’s Moving to Myrtle Beach?</h3>
+    <p class="mb-subtitle">Toggle a profile to see what they’re looking for.</p>
+    <div class="mb-profiles">
+      <button data-profile="retirees">Retirees</button>
+      <button data-profile="families">Growing Families</button>
+      <button data-profile="remote">Remote Workers</button>
+      <button data-profile="secondHome">Second-Home Buyers</button>
+      <button data-profile="youngPros">Younger Professionals</button>
+    </div>
+    <div id="mb-profile-panel" class="mb-panel">
+      <p class="mb-placeholder">Select a buyer profile to view details.</p>
+    </div>
+  </div>
+
+  <!-- Market Impact Summary -->
+  <div class="mb-section">
+    <h3>Market Impact Snapshot (2025)</h3>
+    <div class="mb-impact-grid">
+      <div>
+        <strong>Demand</strong>
+        <p>Steady and rising across most price points, especially in Carolina Forest, Market Common, and Conway.</p>
+      </div>
+      <div>
+        <strong>Pricing</strong>
+        <p>Gradual appreciation driven by inbound migration and limited turnkey inventory.</p>
+      </div>
+      <div>
+        <strong>New Construction</strong>
+        <p>Strong activity along Hwy 707, Forestbrook, and Conway corridors, adding options but not oversupplying.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mb-migration-widget {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #d6e4f0;
+    background: #f7fbff;
+    color: #022b3a;
+  }
+
+  .mb-migration-widget h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .mb-migration-widget h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  .mb-subtitle {
+    margin: 0.25rem 0 1rem;
+    font-size: 0.9rem;
+    color: #4a6572;
+  }
+
+  .mb-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0edf7;
+  }
+
+  .mb-state-buttons,
+  .mb-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mb-state-buttons button,
+  .mb-profiles button {
+    border: 1px solid #b4d4f4;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+  }
+
+  .mb-state-buttons button:hover,
+  .mb-profiles button:hover {
+    background: #e2f1ff;
+    transform: translateY(-1px);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .mb-state-buttons button.mb-active,
+  .mb-profiles button.mb-active {
+    background: #0f8fd5;
+    color: #ffffff;
+    border-color: #0f8fd5;
+  }
+
+  .mb-panel {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d6e4f0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .mb-panel h4 {
+    margin: 0 0 0.25rem;
+  }
+
+  .mb-panel ul {
+    padding-left: 1.2rem;
+    margin: 0.25rem 0 0;
+  }
+
+  .mb-placeholder {
+    margin: 0;
+    color: #7b8a96;
+    font-size: 0.85rem;
+  }
+
+  .mb-impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .mb-impact-grid > div {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #d6e4f0;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .mb-impact-grid strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .mb-migration-widget {
+      padding: 1.1rem;
+    }
+
+    .mb-state-buttons button,
+    .mb-profiles button {
+      flex: 1 1 calc(50% - 0.5rem);
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const stateData = {
+      NC: {
+        name: "North Carolina",
+        rank: "#1 inbound state",
+        bullets: [
+          "Fast relocations from Charlotte, Raleigh, and Fayetteville.",
+          "Lower taxes and cost of living compared to major NC metros.",
+          "Popular landing spots: Carolina Forest, Socastee, and Conway."
+        ]
+      },
+      NY: {
+        name: "New York",
+        rank: "Top 3 inbound state",
+        bullets: [
+          "High cost-of-living push from NYC and suburbs.",
+          "More remote workers trading city life for coast life.",
+          "Popular areas: Market Common, Surfside Beach, North Myrtle Beach."
+        ]
+      },
+      NJ: {
+        name: "New Jersey",
+        rank: "Top 5 inbound state",
+        bullets: [
+          "Significant property tax savings after relocating.",
+          "Retirees and former commuters choosing a coastal reset.",
+          "Interest in walkable, amenity-rich communities along the Grand Strand."
+        ]
+      },
+      PA: {
+        name: "Pennsylvania",
+        rank: "Fast-rising inbound state",
+        bullets: [
+          "Warmer climate and lifestyle-driven moves from Pittsburgh and Philly suburbs.",
+          "Value-focused buyers seeking more home for the money.",
+          "Popular neighborhoods: Barefoot Resort, Little River, Conway."
+        ]
+      },
+      VA: {
+        name: "Virginia",
+        rank: "Steady inbound pipeline",
+        bullets: [
+          "Shorter distance move from Hampton Roads, Richmond, and NOVA.",
+          "Military-to-civilian transitions looking for a softer coastal pace.",
+          "Growth hot spots: Forestbrook, 707 corridor, Burgess area."
+        ]
+      },
+      OH: {
+        name: "Ohio & Midwest",
+        rank: "Strong Midwest inbound group",
+        bullets: [
+          "Retirees and planners buying now for future coastal retirement.",
+          "Remote professionals drawn by affordability and quality of life.",
+          "Popular areas: Cherry Grove, Murrells Inlet, Pawleys Island."
+        ]
+      }
+    };
+
+    const profileData = {
+      retirees: {
+        label: "Retirees",
+        text: "Retirees are looking for low-maintenance homes, single-story living, and amenity-rich communities close to healthcare, golf, and the beach. Areas like Murrells Inlet, Pawleys Island, and 55+ style neighborhoods remain top choices."
+      },
+      families: {
+        label: "Growing Families",
+        text: "Families relocating from NC, NY, NJ, and PA often prioritize schools, yard space, and proximity to everyday conveniences. Carolina Forest, Conway, and Socastee are popular for their balance of value and community."
+      },
+      remote: {
+        label: "Remote Workers",
+        text: "Remote workers want strong internet, home office space, and lifestyle perks. They tend to gravitate toward Market Common, Carolina Forest, and newer communities with good amenities and easy airport access."
+      },
+      secondHome: {
+        label: "Second-Home Buyers",
+        text: "Second-home buyers usually start with condos or townhomes near the beach or Intracoastal Waterway, planning to convert them into full-time residences later. North Myrtle Beach, Cherry Grove, and resort-style communities are favorites."
+      },
+      youngPros: {
+        label: "Younger Professionals",
+        text: "Younger pros from higher-cost metros see Myrtle Beach as an affordable way to own a home sooner. They’re drawn to walkable pockets, entertainment, and quick access to both work and the water."
+      }
+    };
+
+    const stateButtons = document.querySelectorAll(".mb-state-buttons button");
+    const statePanel = document.getElementById("mb-state-panel");
+
+    stateButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-state");
+        const info = stateData[key];
+        if (!info) return;
+
+        stateButtons.forEach(b => b.classList.remove("mb-active"));
+        btn.classList.add("mb-active");
+
+        statePanel.innerHTML = `
+          <h4>${info.name}</h4>
+          <p><strong>Role in Migration:</strong> ${info.rank}</p>
+          <ul>${info.bullets.map(item => `<li>${item}</li>`).join("")}</ul>
+        `;
+      });
+    });
+
+    const profileButtons = document.querySelectorAll(".mb-profiles button");
+    const profilePanel = document.getElementById("mb-profile-panel");
+
+    profileButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-profile");
+        const info = profileData[key];
+        if (!info) return;
+
+        profileButtons.forEach(b => b.classList.remove("mb-active"));
+        btn.classList.add("mb-active");
+
+        profilePanel.innerHTML = `
+          <h4>${info.label}</h4>
+          <p>${info.text}</p>
+        `;
+      });
+    });
+  })();
+</script>

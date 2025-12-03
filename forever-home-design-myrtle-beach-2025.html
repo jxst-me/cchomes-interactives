@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forever Home Interactive Infographic</title>
+  <style>
+    :root {
+      --fh-bg: #f5f7fb;
+      --fh-primary: #155e75;
+      --fh-primary-light: #0ea5e9;
+      --fh-accent: #14b8a6;
+      --fh-text: #0f172a;
+      --fh-muted: #6b7280;
+      --fh-border: #e5e7eb;
+      --fh-radius-lg: 16px;
+      --fh-radius-xl: 24px;
+      --fh-shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: white;
+      color: var(--fh-text);
+    }
+
+    .fh-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 24px;
+      background: linear-gradient(135deg, #eff6ff 0%, #ecfeff 40%, #f9fafb 100%);
+      border-radius: 32px;
+      box-shadow: var(--fh-shadow-soft);
+    }
+
+    .fh-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .fh-header-main {
+      max-width: 680px;
+    }
+
+    .fh-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fh-primary);
+      font-weight: 600;
+    }
+
+    .fh-title {
+      font-size: 1.9rem;
+      line-height: 1.2;
+      margin: 8px 0;
+      color: var(--fh-text);
+    }
+
+    .fh-subtitle {
+      font-size: 0.95rem;
+      color: var(--fh-muted);
+      max-width: 540px;
+    }
+
+    .fh-badge {
+      align-self: flex-start;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.08);
+      color: var(--fh-primary);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+
+    .fh-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--fh-accent);
+    }
+
+    .fh-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .fh-layout {
+        grid-template-columns: 1fr;
+      }
+      .fh-wrapper {
+        margin: 16px;
+        padding: 18px;
+      }
+      .fh-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Tabs */
+    .fh-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--fh-border);
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fh-tab {
+      flex: 1;
+      position: relative;
+      border: none;
+      background: transparent;
+      border-radius: 999px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--fh-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+      z-index: 2;
+    }
+
+    .fh-tab span.emoji {
+      font-size: 1rem;
+    }
+
+    .fh-tab.active {
+      color: var(--fh-primary);
+    }
+
+    .fh-tab-indicator {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      width: 33.5%;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.16);
+      border: 1px solid rgba(14, 165, 233, 0.45);
+      box-shadow: 0 5px 18px rgba(37, 99, 235, 0.22);
+      transition: transform 0.25s ease;
+      z-index: 1;
+    }
+
+    .fh-tab-indicator.pos-0 { transform: translateX(0%); }
+    .fh-tab-indicator.pos-1 { transform: translateX(100%); }
+    .fh-tab-indicator.pos-2 { transform: translateX(200%); }
+
+    .fh-panel {
+      display: none;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: var(--fh-radius-xl);
+      padding: 16px 18px;
+      border: 1px solid var(--fh-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .fh-panel.active {
+      display: block;
+    }
+
+    .fh-panel-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fh-muted);
+      margin-bottom: 4px;
+    }
+
+    .fh-panel-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--fh-primary);
+    }
+
+    .fh-panel-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .fh-panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fh-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .fh-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--fh-text);
+    }
+
+    .fh-list-item-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(22, 163, 74, 0.8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      background: rgba(22, 163, 74, 0.06);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .fh-list-subtext {
+      font-size: 0.78rem;
+      color: var(--fh-muted);
+      margin-top: 2px;
+    }
+
+    .fh-meta {
+      font-size: 0.78rem;
+      color: var(--fh-muted);
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .fh-meta strong {
+      color: var(--fh-primary);
+      font-weight: 700;
+    }
+
+    /* Score card */
+    .fh-score-card {
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      padding: 18px 18px 16px;
+      border-radius: var(--fh-radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fh-score-card::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.3), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.25), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .fh-score-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .fh-score-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .fh-score-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .fh-score-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+
+    .fh-score-value span.percent {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .fh-score-badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .fh-score-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .fh-score-bar-wrap {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .fh-score-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #0ea5e9);
+      transition: width 0.25s ease;
+    }
+
+    .fh-score-note {
+      font-size: 0.75rem;
+      color: #cbd5f5;
+      margin-bottom: 10px;
+    }
+
+    .fh-feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 12px;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 520px) {
+      .fh-feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fh-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #e5e7eb;
+    }
+
+    .fh-feature-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid #64748b;
+      cursor: pointer;
+      accent-color: #22c55e; /* modern browsers */
+    }
+
+    .fh-feature-label {
+      cursor: pointer;
+    }
+
+    .fh-score-location {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .fh-score-location-icon {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="fh-wrapper" aria-label="Forever Home Interactive Infographic">
+    <header class="fh-header">
+      <div class="fh-header-main">
+        <div class="fh-kicker">Myrtle Beach “Forever Home” Builder</div>
+        <h1 class="fh-title">Aging-in-Place • Rental Potential • Multigenerational Living</h1>
+        <p class="fh-subtitle">
+          Tap through the three pillars of a forever-ready home, then check off features you already have (or want) to see your
+          <strong>Forever Home Score</strong> for Myrtle Beach living.
+        </p>
+      </div>
+      <div class="fh-badge">
+        <span class="fh-badge-dot"></span>
+        Grand Strand Ready
+      </div>
+    </header>
+
+    <section class="fh-layout">
+      <!-- LEFT: TABS + INFO -->
+      <div>
+        <div class="fh-tabs" role="tablist">
+          <div class="fh-tab-indicator pos-0" aria-hidden="true"></div>
+
+          <button class="fh-tab active" role="tab" aria-selected="true" data-target="panel-aging">
+            <span class="emoji">♿</span> Aging-in-Place
+          </button>
+          <button class="fh-tab" role="tab" aria-selected="false" data-target="panel-rental">
+            <span class="emoji">💼</span> Rental Potential
+          </button>
+          <button class="fh-tab" role="tab" aria-selected="false" data-target="panel-multi">
+            <span class="emoji">🏡</span> Multigenerational Living
+          </button>
+        </div>
+
+        <!-- Panel: Aging-in-Place -->
+        <article id="panel-aging" class="fh-panel active" role="tabpanel">
+          <div class="fh-panel-label">Pillar 1</div>
+          <h2 class="fh-panel-title">Coastal Comfort for Every Stage of Life</h2>
+          <div class="fh-panel-grid">
+            <ul class="fh-list">
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Zero-step entry</strong><br />
+                  <span class="fh-list-subtext">Eliminate trip hazards at doors & garages.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Main-level primary suite</strong><br />
+                  <span class="fh-list-subtext">Stay on one level as mobility changes.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Curbless shower + bench</strong><br />
+                  <span class="fh-list-subtext">Safer bathing now and in later years.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Wider doors & hallways</strong><br />
+                  <span class="fh-list-subtext">Future-ready for walkers & wheelchairs.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="fh-meta">
+              <strong>Aging-in-Place Goal:</strong><br />
+              Design a Myrtle Beach home that lets you stay independent longer, without sacrificing coastal comfort or style.
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel: Rental Potential -->
+        <article id="panel-rental" class="fh-panel" role="tabpanel">
+          <div class="fh-panel-label">Pillar 2</div>
+          <h2 class="fh-panel-title">Rental-Ready Without Losing Privacy</h2>
+          <div class="fh-panel-grid">
+            <ul class="fh-list">
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Lockout guest suite</strong><br />
+                  <span class="fh-list-subtext">Private entry for guests, tenants, or family.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Mini kitchenette</strong><br />
+                  <span class="fh-list-subtext">Fridge, sink & microwave boost rental appeal.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Durable, coastal-smart finishes</strong><br />
+                  <span class="fh-list-subtext">Luxury vinyl plank & composite decking handle traffic and humidity.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Independent temperature control</strong><br />
+                  <span class="fh-list-subtext">Mini-splits give guests comfort without affecting your whole home.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="fh-meta">
+              <strong>Rental Goal:</strong><br />
+              Create flexible spaces that can toggle between personal use and income-producing stays—within local HOA and city rules.
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel: Multigenerational -->
+        <article id="panel-multi" class="fh-panel" role="tabpanel">
+          <div class="fh-panel-label">Pillar 3</div>
+          <h2 class="fh-panel-title">One Roof, Multiple Lifestyles</h2>
+          <div class="fh-panel-grid">
+            <ul class="fh-list">
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Dual primary suites</strong><br />
+                  <span class="fh-list-subtext">Comfortable spaces for parents, grandparents, or adult children.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Separate living zones</strong><br />
+                  <span class="fh-list-subtext">Lofts, FROGs, and bonus rooms create breathing room.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Sound-dampening between floors</strong><br />
+                  <span class="fh-list-subtext">Keeps three generations from living on top of each other—literally.</span>
+                </div>
+              </li>
+              <li class="fh-list-item">
+                <span class="fh-list-item-icon">✓</span>
+                <div>
+                  <strong>Outdoor retreat space</strong><br />
+                  <span class="fh-list-subtext">Screened porches & patios give everyone a quiet corner.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="fh-meta">
+              <strong>Multigenerational Goal:</strong><br />
+              Support shared living, privacy, and connection for family across every season of life.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- RIGHT: SCORE CARD -->
+      <aside class="fh-score-card">
+        <div class="fh-score-inner">
+          <div class="fh-score-label">Your Forever Home Score</div>
+          <div class="fh-score-row">
+            <div class="fh-score-value">
+              <span id="fhScoreNumber">0</span>
+              <span class="percent">/ 100</span>
+            </div>
+            <div class="fh-score-badge">
+              <span class="fh-score-badge-dot"></span>
+              Myrtle Beach Ready Check
+            </div>
+          </div>
+          <div class="fh-score-bar-wrap" aria-hidden="true">
+            <div id="fhScoreBar" class="fh-score-bar-fill"></div>
+          </div>
+          <p id="fhScoreNote" class="fh-score-note">
+            Start checking features you have (or plan to add) to see how “forever-ready” your home is.
+          </p>
+
+          <div class="fh-feature-list" aria-label="Forever home features checklist">
+            <!-- Each checkbox has a weight; total max = 100 -->
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="15" />
+              <span class="fh-feature-label">Main-level primary suite</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Zero-step entry</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Curbless shower with bench</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Lockout or guest suite</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Kitchenette for guests/rentals</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Dual primary or in-law suite</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Sound-dampened living zones</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="10" />
+              <span class="fh-feature-label">Outdoor retreat (porch/patio)</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="8" />
+              <span class="fh-feature-label">Coastal-tough, low-maintenance finishes</span>
+            </label>
+            <label class="fh-feature-item">
+              <input type="checkbox" class="fh-feature-check" data-weight="7" />
+              <span class="fh-feature-label">Smart home comfort & safety tech</span>
+            </label>
+          </div>
+
+          <div class="fh-score-location">
+            <span class="fh-score-location-icon">📍</span>
+            Designed for Myrtle Beach, Carolina Forest, Market Common & the Grand Strand.
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    // Tab switching
+    (function () {
+      const tabs = document.querySelectorAll('.fh-tab');
+      const panels = document.querySelectorAll('.fh-panel');
+      const indicator = document.querySelector('.fh-tab-indicator');
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          // Update active tab
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          // Update indicator position
+          indicator.classList.remove('pos-0', 'pos-1', 'pos-2');
+          indicator.classList.add('pos-' + index);
+
+          // Show corresponding panel
+          const targetId = tab.getAttribute('data-target');
+          panels.forEach(panel => {
+            panel.classList.toggle('active', panel.id === targetId);
+          });
+        });
+      });
+    })();
+
+    // Forever Home Score logic
+    (function () {
+      const checks = document.querySelectorAll('.fh-feature-check');
+      const scoreNumber = document.getElementById('fhScoreNumber');
+      const scoreBar = document.getElementById('fhScoreBar');
+      const scoreNote = document.getElementById('fhScoreNote');
+
+      function calculateMaxScore() {
+        let max = 0;
+        checks.forEach(ch => {
+          const w = Number(ch.getAttribute('data-weight')) || 0;
+          max += w;
+        });
+        return max || 100;
+      }
+
+      const maxScore = calculateMaxScore();
+
+      function updateScore() {
+        let sum = 0;
+        checks.forEach(ch => {
+          if (ch.checked) {
+            sum += Number(ch.getAttribute('data-weight')) || 0;
+          }
+        });
+
+        const percent = Math.min(Math.round((sum / maxScore) * 100), 100);
+        scoreNumber.textContent = percent.toString();
+        scoreBar.style.width = percent + '%';
+
+        if (percent === 0) {
+          scoreNote.textContent = 'Start checking features you have (or plan to add) to see how “forever-ready” your home is.';
+        } else if (percent < 35) {
+          scoreNote.textContent = 'Good starting point. A few key upgrades could make a big impact on aging-in-place and rental flexibility.';
+        } else if (percent < 70) {
+          scoreNote.textContent = 'Nice work. Your home has a solid foundation—strategic tweaks could turn it into a true Myrtle Beach forever home.';
+        } else if (percent < 100) {
+          scoreNote.textContent = 'You’re very close. One or two smart additions could give you top-tier flexibility for every life stage.';
+        } else {
+          scoreNote.textContent = 'You’re at 100%. This layout is built for aging-in-place, rental potential, and multigenerational living along the Grand Strand.';
+        }
+      }
+
+      checks.forEach(ch => ch.addEventListener('change', updateScore));
+
+      // Initialize score display
+      updateScore();
+    })();
+  </script>
+</body>
+</html>

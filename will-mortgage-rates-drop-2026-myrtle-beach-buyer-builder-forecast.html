@@ -1,0 +1,205 @@
+<div style="font-family: 'Inter', sans-serif; max-width: 1000px; margin: auto; color: #1a1a1a;">
+  <style>
+  .pf-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .pf-tab {
+    padding: 10px 16px;
+    background: #e8eef6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pf-tab:hover { background: #d4e0f0; }
+  .pf-tab.active { background: #2a5c99; color: #fff; }
+
+  /* MAKE ONLY the last tab drop + stretch full width */
+  .pf-tab:last-child {
+    flex: 1 0 100%;
+    text-align: center;
+  }
+
+    .pf-panel { display: none; animation: fade 0.3s ease; }
+    .pf-panel.active { display: block; }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    .pf-section-box {
+      background: #f9fafc;
+      padding: 18px;
+      border-left: 4px solid #2a5c99;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    .pf-h2 { font-size: 20px; margin-top: 10px; font-weight: 700; }
+
+    .pf-checklist {
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-top: 20px;
+    }
+    .pf-checklist h3 { margin-bottom: 12px; }
+    .pf-checklist label { display: block; margin-bottom: 8px; cursor: pointer; }
+
+    @media(max-width: 768px){
+      .pf-wrapper { flex-direction: column; }
+    }
+  </style>
+
+  <h1 style="text-align:center; margin-bottom:25px;">📉 Will Mortgage Rates Drop in 2026?<br>Buyer & Builder Forecasts for Myrtle Beach</h1>
+
+  <div class="pf-tabs">
+    <div class="pf-tab active" data-tab="t1">How Rates Work</div>
+    <div class="pf-tab" data-tab="t2">2026 Expert Forecasts</div>
+    <div class="pf-tab" data-tab="t3">Impact on Buyers</div>
+    <div class="pf-tab" data-tab="t4">Impact on Builders</div>
+    <div class="pf-tab" data-tab="t5">Should You Wait?</div>
+    <div class="pf-tab" data-tab="t6">2026 Game Plan</div>
+  </div>
+
+  <!-- Panels -->
+  <div class="pf-panel active" id="t1">
+    <div class="pf-section-box">
+      <div class="pf-h2">Quick Reality Check: What Drives Mortgage Rates?</div>
+      <ul>
+        <li>Federal funds rate (set indirectly by the Fed)</li>
+        <li>Inflation expectations</li>
+        <li>Bond market & 10-year Treasury yields</li>
+        <li>Risk & investor demand</li>
+      </ul>
+      <p>The Fed doesn’t set mortgage rates, but the 2025–2026 outlook shows gradual rate easing as inflation aims toward 2%.</p>
+    </div>
+  </div>
+
+  <div class="pf-panel" id="t2">
+    <div class="pf-section-box">
+      <div class="pf-h2">What Experts Predict for 2026</div>
+      <p><strong>MBA:</strong> Rates easing into mid-6% range by late 2026.</p>
+      <p><strong>Fannie Mae:</strong> High-5% to low-6% range as inflation cools.</p>
+      <p><strong>Freddie Mac:</strong> Elevated compared to history, but off 2023–2024 highs.</p>
+      <h3>Plain English</h3>
+      <ul>
+        <li>Expect mid-5% to mid-6% averages</li>
+        <li>No return to pandemic-era 3% rates</li>
+        <li>Volatile month to month</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf-panel" id="t3">
+    <div class="pf-section-box">
+      <div class="pf-h2">Impact on Myrtle Beach Buyers</div>
+      <h3>Affordability Shift</h3>
+      <p>Dropping from high-6s to mid-6s saves $150–$300/month for typical Myrtle Beach homes.</p>
+      <h3>Inventory & Competition</h3>
+      <ul>
+        <li>More sellers listing as they release their ultra-low pandemic rates</li>
+        <li>Out-of-state buyers re-entering the market</li>
+      </ul>
+      <h3>Smart 2026 Buyer Moves</h3>
+      <ul>
+        <li>Choose the right home, refinance later</li>
+        <li>Use buydowns & seller credits</li>
+        <li>Strategic locking with float-down options</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf-panel" id="t4">
+    <div class="pf-section-box">
+      <div class="pf-h2">What Lower-but-Not-Low Rates Mean for Builders</div>
+      <h3>Expect More Incentives</h3>
+      <ul>
+        <li>2-1 & 3-2-1 buydowns</li>
+        <li>Permanent rate buydowns</li>
+        <li>Closing-cost help</li>
+      </ul>
+      <h3>Product Shifts in 2026</h3>
+      <ul>
+        <li>Smarter square footage</li>
+        <li>Energy-efficient features</li>
+        <li>Flexible multipurpose spaces</li>
+      </ul>
+      <p>Builders like Carolina Crafted Homes can create real affordability through design + incentives rather than price cuts.</p>
+    </div>
+  </div>
+
+  <div class="pf-panel" id="t5">
+    <div class="pf-section-box">
+      <div class="pf-h2">Should You Wait or Move in 2026?</div>
+      <h3>When Waiting Helps</h3>
+      <ul>
+        <li>Credit score needs improving</li>
+        <li>Locked into a 3–4% mortgage already</li>
+        <li>Need time to save for down payment</li>
+      </ul>
+      <h3>When Moving Makes Sense</h3>
+      <ul>
+        <li>Your life stage demands it</li>
+        <li>You find the right home or homesite</li>
+        <li>Builder incentives make payments workable</li>
+      </ul>
+      <p>Most forecasts expect rate cuts into 2027, meaning refinance opportunities will exist.</p>
+    </div>
+  </div>
+
+  <div class="pf-panel" id="t6">
+    <div class="pf-section-box">
+      <div class="pf-h2">2026 Game Plan (Buyers & Builders)</div>
+      <h3>For Buyers</h3>
+      <ul>
+        <li>Know your comfort payment</li>
+        <li>Compare today vs. possible 2027 refinance</li>
+        <li>Consider new construction with structured buydowns</li>
+        <li>Look just outside hot zones for value</li>
+      </ul>
+      <h3>For Builders</h3>
+      <ul>
+        <li>Lead with transparent pricing</li>
+        <li>Use meaningful buydowns</li>
+        <li>Highlight lifestyle value: beach, golf, marsh views</li>
+        <li>Partner with local lenders</li>
+      </ul>
+    </div>
+
+    <div class="pf-checklist">
+      <h3>⚡ Your 2026 Prep Checklist</h3>
+      <label><input type="checkbox"> Check current rate vs. projected 2026 ranges</label>
+      <label><input type="checkbox"> Review buydown or refinance scenario</label>
+      <label><input type="checkbox"> Explore Myrtle Beach communities beyond the hotspots</label>
+      <label><input type="checkbox"> Compare new construction incentives</label>
+      <label><input type="checkbox"> Schedule a strategy consultation</label>
+    </div>
+
+    <div style="margin-top:20px;">
+      <a href="https://www.carolinacraftedhomes.com/contact-us" target="_blank" style="display:block; text-align:center; padding:12px 0; background:#2a5c99; color:#fff; border-radius:6px; text-decoration:none; font-weight:700;">
+        Schedule Your 2026 Consultation
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.pf-tab');
+    const panels = document.querySelectorAll('.pf-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</div>

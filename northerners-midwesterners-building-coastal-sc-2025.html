@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snow to Coastal SC — What They’re Building (Interactive Infographic)</title>
+  <meta name="description" content="Interactive infographic: Northerners & Midwesterners leaving snow for Coastal South Carolina—what they’re building around Myrtle Beach in 2026." />
+
+  <style>
+    :root{
+      --bg: #07121a;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --line: rgba(255,255,255,.14);
+      --good: #54f0c5;
+      --warn: #ffd36a;
+      --accent: #66b7ff;
+      --accent2:#a78bfa;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(102,183,255,.28), transparent 60%),
+        radial-gradient(900px 600px at 80% 0%, rgba(167,139,250,.22), transparent 55%),
+        radial-gradient(700px 700px at 80% 80%, rgba(84,240,197,.14), transparent 55%),
+        linear-gradient(180deg, #061019, #07121a 45%, #050c12);
+      overflow-x:hidden;
+    }
+
+    a{color: var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 18px 90px}
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:10px 0 16px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
+    }
+
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.7), transparent 60%),
+        linear-gradient(135deg, rgba(102,183,255,.95), rgba(84,240,197,.85));
+      box-shadow: 0 10px 24px rgba(102,183,255,.18);
+    }
+
+    .pillrow{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:8px 12px; border-radius:999px;
+      font-size:13px; color: var(--muted);
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .pill strong{color: var(--text)}
+
+    .hero{
+      position:relative;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow:hidden;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(400px 260px at 20% 30%, rgba(102,183,255,.22), transparent 60%),
+        radial-gradient(440px 280px at 75% 15%, rgba(167,139,250,.22), transparent 60%),
+        radial-gradient(520px 340px at 70% 85%, rgba(84,240,197,.12), transparent 60%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+
+    .hero-inner{position:relative; display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:start}
+
+    h1{margin:0 0 10px; font-size: clamp(24px, 3vw, 38px); line-height:1.1}
+    .sub{margin:0 0 16px; color: var(--muted); font-size: 15px; max-width: 62ch}
+
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding:10px 14px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight:650;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(102,183,255,.95), rgba(84,240,197,.85));
+      border-color: transparent;
+      color:#041018;
+    }
+
+    .mini-grid{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
+
+    .stat{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.16);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+
+    .stat .k{font-size:12px; color: var(--muted)}
+    .stat .v{font-size:16px; font-weight:800}
+    .stat .n{font-size:12px; color: var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    @media (min-width: 880px){
+      .grid{grid-template-columns: 1fr 1fr}
+    }
+
+    @media (max-width: 880px){
+      .hero-inner{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+
+    .card .hd{
+      padding: 16px 16px 10px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+
+    .card .hd h2{margin:0; font-size: 16px}
+    .card .hd p{margin:6px 0 0; font-size:13px; color: var(--muted)}
+
+    .card .bd{padding: 14px 16px 16px}
+
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      font-size:12px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    .row{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    .seg{
+      display:flex;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.14);
+      border-radius: 999px;
+      overflow:hidden;
+    }
+
+    .seg button{
+      border:0;
+      background:transparent;
+      color: var(--muted);
+      padding: 9px 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size: 13px;
+    }
+
+    .seg button[aria-pressed="true"]{
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+    }
+
+    .persona{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    .persona .box{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+
+    .persona .title{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .persona .title strong{font-size:14px}
+    .persona .title span{font-size:12px; color: var(--muted)}
+    .persona ul{margin:10px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px}
+    .persona li{margin:6px 0}
+
+    .meter{
+      margin-top:10px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      border-radius: 999px;
+      overflow:hidden;
+      height: 12px;
+    }
+
+    .meter > div{
+      height:100%;
+      width: 40%;
+      background: linear-gradient(90deg, rgba(102,183,255,.9), rgba(84,240,197,.85));
+      border-radius: 999px;
+      transition: width .35s ease;
+    }
+
+    .list{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 880px){
+      .list.cols2{grid-template-columns: 1fr 1fr}
+    }
+
+    .check{
+      display:flex; gap:10px; align-items:flex-start;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      border-radius: var(--radius);
+      padding: 11px 12px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .check:hover{transform: translateY(-1px); background: rgba(0,0,0,.18)}
+
+    .check input{margin-top: 3px; transform: scale(1.1)}
+    .check .t{font-weight:800; font-size: 13px}
+    .check .d{color: var(--muted); font-size: 12px; margin-top: 4px}
+
+    .chartWrap{margin-top: 10px; border:1px solid var(--line); background: rgba(0,0,0,.12); border-radius: var(--radius2); padding: 12px}
+
+    .bars{display:grid; gap:10px}
+    .barRow{display:grid; grid-template-columns: 150px 1fr 52px; gap:10px; align-items:center}
+    .barRow .label{font-size: 12px; color: var(--muted)}
+    .barRow .value{font-size: 12px; color: var(--muted); text-align:right}
+
+    .bar{
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .bar > div{
+      height:100%; width: 50%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(167,139,250,.85), rgba(102,183,255,.85));
+      transition: width .35s ease;
+    }
+
+    .small{font-size: 12px; color: var(--muted); line-height:1.45}
+
+    .mapGrid{display:grid; grid-template-columns: 1fr; gap:12px; margin-top: 10px}
+    @media (min-width: 880px){
+      .mapGrid{grid-template-columns: 1fr 1fr}
+    }
+
+    .place{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      border-radius: var(--radius2);
+      padding: 12px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+
+    .place .top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+    .place h3{margin:0; font-size: 14px}
+    .place p{margin:4px 0 0; color: var(--muted); font-size: 12px}
+
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+
+    .chip{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding: 6px 9px;
+      border-radius: 999px;
+    }
+
+    .foot{
+      margin-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding-top: 16px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center; justify-content:center;
+      padding: 20px;
+      z-index: 40;
+    }
+
+    .modal{
+      width:min(760px, 100%);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(10,18,26,.92);
+      box-shadow: 0 20px 70px rgba(0,0,0,.6);
+      overflow:hidden;
+    }
+
+    .modal .mhd{padding: 16px 16px 10px; display:flex; align-items:flex-start; justify-content:space-between; gap:10px; border-bottom:1px solid rgba(255,255,255,.10)}
+    .modal .mhd h3{margin:0; font-size: 15px}
+    .modal .mhd button{border:1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: var(--text); padding:8px 10px; border-radius: 12px; cursor:pointer}
+    .modal .mbd{padding: 14px 16px 16px}
+
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.2); padding: 2px 6px; border-radius: 8px; color: rgba(255,255,255,.85)}
+
+    .toast{
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.75);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92);
+      padding: 10px 12px;
+      border-radius: 14px;
+      display:none;
+      align-items:center;
+      gap:10px;
+      z-index: 60;
+      backdrop-filter: blur(6px);
+    }
+
+    .toast .dot{width:10px; height:10px; border-radius:999px; background: linear-gradient(135deg, rgba(102,183,255,.95), rgba(84,240,197,.85));}
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important; scroll-behavior:auto !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand" aria-label="Brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; opacity:.9">Carolina Crafted Homes</div>
+          <div style="font-size:12px; color:var(--muted)">Interactive Infographic • Myrtle Beach / Grand Strand • 2026</div>
+        </div>
+      </div>
+
+      <div class="pillrow" aria-label="Tools">
+        <div class="pill" id="btnSources" role="button" tabindex="0" aria-label="Open sources">
+          <span aria-hidden="true">🔎</span> <strong>Sources</strong>
+        </div>
+        <div class="pill" id="btnShare" role="button" tabindex="0" aria-label="Copy share snippet">
+          <span aria-hidden="true">🔗</span> <strong>Copy Embed</strong>
+        </div>
+        <div class="pill" id="btnReset" role="button" tabindex="0" aria-label="Reset selections">
+          <span aria-hidden="true">♻️</span> <strong>Reset</strong>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Leaving Snow for Coastal SC—Here’s What They’re Building</h1>
+          <p class="sub">
+            A quick, interactive look at why Northerners & Midwesterners are moving to the Myrtle Beach area—and the new-home features they’re prioritizing as we head into 2026.
+          </p>
+          <div class="ctaRow">
+            <button class="btn primary" id="jumpFeatures">Explore Build Trends</button>
+            <button class="btn" id="jumpPlaces">See Where They’re Building</button>
+          </div>
+          <p class="small" style="margin-top:12px; max-width: 70ch">
+            Tip: choose a buyer profile below. The charts and recommended features will update.
+            Use <span class="kbd">Tab</span> to navigate.
+          </p>
+        </div>
+
+        <div class="mini-grid" aria-label="Quick stats">
+          <div class="stat">
+            <div class="k">Main story</div>
+            <div class="v">Migration + new builds</div>
+            <div class="n">Grand Strand, SC</div>
+          </div>
+          <div class="stat">
+            <div class="k">Best fit for</div>
+            <div class="v">Relocating buyers</div>
+            <div class="n">North & Midwest</div>
+          </div>
+          <div class="stat">
+            <div class="k">Build focus</div>
+            <div class="v">Function & lifestyle</div>
+            <div class="n">Not “bigger”</div>
+          </div>
+          <div class="stat">
+            <div class="k">Local hotspots</div>
+            <div class="v">Carolina Forest</div>
+            <div class="n">Market Common + more</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- Buyer personas -->
+      <section class="card" id="personas" aria-label="Buyer personas">
+        <div class="hd">
+          <div>
+            <h2>1) Pick a buyer profile</h2>
+            <p>See how priorities shift for 2026 builds near Myrtle Beach.</p>
+          </div>
+          <span class="tag" id="activePersonaTag">Active: <strong style="color:var(--text)">Empty Nester</strong></span>
+        </div>
+        <div class="bd">
+          <div class="row">
+            <div class="seg" role="group" aria-label="Buyer profile selector">
+              <button type="button" class="segbtn" data-persona="empty" aria-pressed="true">Empty Nester</button>
+              <button type="button" class="segbtn" data-persona="remote" aria-pressed="false">Remote Worker</button>
+              <button type="button" class="segbtn" data-persona="retiree" aria-pressed="false">Retiree</button>
+              <button type="button" class="segbtn" data-persona="snowbird" aria-pressed="false">Snowbird → Full-Time</button>
+            </div>
+            <span class="tag"><span aria-hidden="true">📍</span> Myrtle Beach area</span>
+          </div>
+
+          <div class="persona" id="personaDetails" aria-live="polite"></div>
+
+          <div style="margin-top:12px">
+            <div class="row">
+              <strong style="font-size:13px">Planning Horizon</strong>
+              <span class="tag" id="horizonTag">5–10 years</span>
+            </div>
+            <div class="meter" aria-label="Planning horizon meter" title="Longer bar = longer planning horizon">
+              <div id="horizonBar" style="width:55%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature checklist -->
+      <section class="card" id="features" aria-label="Build features">
+        <div class="hd">
+          <div>
+            <h2>2) What they’re building in 2026</h2>
+            <p>Check features to build a “relocation-ready” home profile.</p>
+          </div>
+          <span class="tag" id="scoreTag">Match Score: <strong style="color:var(--text)">0%</strong></span>
+        </div>
+        <div class="bd">
+          <div class="list cols2" id="featureList"></div>
+
+          <div style="margin-top:12px" class="chartWrap" aria-label="Priority chart">
+            <div class="row">
+              <strong style="font-size:13px">Priority mix</strong>
+              <span class="tag" id="priorityNote">Updates by profile</span>
+            </div>
+            <div class="bars" id="bars"></div>
+            <p class="small" style="margin:10px 0 0">
+              These are directional priorities for content/education—not a promise of market share.
+              Use it to guide your messaging, staging, and build options for 2026.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Places -->
+      <section class="card" id="places" aria-label="Where they’re building">
+        <div class="hd">
+          <div>
+            <h2>3) Where they’re building around the Grand Strand</h2>
+            <p>Tap a location to see the “why” and the build style it attracts.</p>
+          </div>
+          <span class="tag"><span aria-hidden="true">🧭</span> Local snapshot</span>
+        </div>
+        <div class="bd">
+          <div class="mapGrid" id="placeGrid"></div>
+          <p class="small" style="margin:10px 0 0">
+            Local note: these are common preference patterns we see across Myrtle Beach, Horry County, and the wider Grand Strand.
+          </p>
+        </div>
+      </section>
+
+      <!-- Timeline / Talking points -->
+      <section class="card" aria-label="2026 messaging">
+        <div class="hd">
+          <div>
+            <h2>4) 2026-ready talking points</h2>
+            <p>Use these as website copy, listing notes, or appointment prompts.</p>
+          </div>
+          <span class="tag"><span aria-hidden="true">🗣️</span> Copy-friendly</span>
+        </div>
+        <div class="bd">
+          <div class="list" id="talkingPoints"></div>
+          <div class="foot">
+            <div>
+              Post date: <strong style="color:var(--text)">2025-12-14</strong> • Built for relevance in <strong style="color:var(--text)">2026</strong>
+            </div>
+            <div>
+              Want this embedded on your site? Use <strong>Copy Embed</strong>.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal: Sources -->
+  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="mhd">
+        <div>
+          <h3 id="modalTitle">Sources & data notes</h3>
+          <div class="small">Use these links when you cite migration context in your blog or infographic.</div>
+        </div>
+        <button type="button" id="closeModal" aria-label="Close">✕</button>
+      </div>
+      <div class="mbd">
+        <ul class="small" style="margin:0; padding-left:18px">
+          <li><a href="https://www.census.gov/data.html" target="_blank" rel="noopener">U.S. Census Bureau — Data</a> (migration, population, housing datasets)</li>
+          <li><a href="https://www.uhaul.com/Articles/About/" target="_blank" rel="noopener">U-Haul — About / Migration Trend Articles</a> (moving trends and reporting)</li>
+        </ul>
+        <p class="small" style="margin:12px 0 0">
+          Tip: If you add specific numbers later (net domestic migration, inbound/outbound ranks, etc.), update the chart values in this file so the visual matches your citations.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="dot" aria-hidden="true"></div>
+    <div id="toastText">Copied</div>
+  </div>
+
+  <script>
+    // -----------------------------
+    // Editable content model
+    // -----------------------------
+
+    const PERSONAS = {
+      empty: {
+        name: "Empty Nester",
+        tagline: "Wants a fresh start without wasting space.",
+        horizonLabel: "5–10 years",
+        horizonPct: 55,
+        bullets: [
+          "Right-sized home (often 1,700–2,400 sq ft) with an open kitchen.",
+          "Main-floor primary suite; future-friendly layout.",
+          "Flex room for hobbies + visiting family.",
+          "Community amenities (sidewalks, pool, pickleball) matter." 
+        ],
+        priorities: {
+          "Single-level living": 82,
+          "Outdoor living": 74,
+          "Low maintenance": 76,
+          "Community amenities": 68,
+          "Home office": 46
+        }
+      },
+      remote: {
+        name: "Remote Worker",
+        tagline: "Trading commutes for coastline—needs a serious setup.",
+        horizonLabel: "3–7 years",
+        horizonPct: 45,
+        bullets: [
+          "Dedicated office (not a hallway nook) + strong internet options.",
+          "Quiet streets, easy access to coffee, gyms, and daily errands.",
+          "Outdoor space that doubles as a decompress zone.",
+          "Prefers newer builds to avoid project overload." 
+        ],
+        priorities: {
+          "Home office": 86,
+          "Outdoor living": 70,
+          "Low maintenance": 64,
+          "Single-level living": 58,
+          "Community amenities": 60
+        }
+      },
+      retiree: {
+        name: "Retiree",
+        tagline: "Designing for comfort now—and independence later.",
+        horizonLabel: "10+ years",
+        horizonPct: 78,
+        bullets: [
+          "Single-level living with wider halls and zero-step entry options.",
+          "Walk-in shower + laundry near primary suite.",
+          "Lower utility costs (newer HVAC, insulation, efficient windows).",
+          "Close to healthcare, grocery, and easy driving routes." 
+        ],
+        priorities: {
+          "Single-level living": 92,
+          "Low maintenance": 84,
+          "Outdoor living": 62,
+          "Community amenities": 58,
+          "Home office": 28
+        }
+      },
+      snowbird: {
+        name: "Snowbird → Full-Time",
+        tagline: "Done splitting time—wants simplicity and storage.",
+        horizonLabel: "7–12 years",
+        horizonPct: 66,
+        bullets: [
+          "Lock-and-leave convenience + smart security features.",
+          "Storage for beach gear, golf, and visiting family.",
+          "Covered/screened porch for year-round use.",
+          "Often prefers North Myrtle Beach / Little River vibes." 
+        ],
+        priorities: {
+          "Low maintenance": 88,
+          "Outdoor living": 78,
+          "Single-level living": 74,
+          "Community amenities": 62,
+          "Home office": 34
+        }
+      }
+    };
+
+    // Feature blocks (what users can check). Each has a weight contribution to the "match score".
+    const FEATURES = [
+      { id:"single", title:"Single-level or main-floor primary", desc:"Aging-friendly without feeling ‘old.’", weight: 18 },
+      { id:"zero", title:"Zero-step entry / wider doors", desc:"Future-proof mobility and easier move-in.", weight: 14 },
+      { id:"shower", title:"Walk-in shower + comfort bath", desc:"Bench/handheld-ready layouts.", weight: 10 },
+      { id:"laundry", title:"Laundry near primary suite", desc:"Less hauling baskets = more sanity.", weight: 8 },
+      { id:"porch", title:"Covered or screened porch", desc:"Outdoor living you’ll actually use.", weight: 12 },
+      { id:"storage", title:"Extra storage (garage + closets)", desc:"Beach gear, golf, holiday visitors.", weight: 8 },
+      { id:"office", title:"Dedicated home office", desc:"Door, daylight, and a real wall for Zoom.", weight: 12 },
+      { id:"efficient", title:"Energy-efficient systems", desc:"Newer HVAC, insulation, windows.", weight: 8 },
+      { id:"smart", title:"Smart-home basics", desc:"Security, thermostat, doorbell.", weight: 5 },
+      { id:"amenities", title:"Community amenities", desc:"Sidewalks, pool, trails, pickleball.", weight: 5 }
+    ];
+
+    const PLACES = [
+      {
+        name: "Carolina Forest",
+        blurb: "Newer builds + schools + convenience to beaches and daily errands.",
+        chips: ["Family-friendly", "New construction", "Easy access"],
+        bestFor: ["Empty Nester", "Remote Worker"],
+        buildStyle: "Right-sized plans, flex rooms, community amenities"
+      },
+      {
+        name: "Market Common",
+        blurb: "Walkability, parks, and a ‘live-work-play’ feel close to the beach.",
+        chips: ["Walkable", "Parks", "Restaurants"],
+        bestFor: ["Remote Worker", "Empty Nester"],
+        buildStyle: "Low-maintenance living, modern finishes, smaller yards"
+      },
+      {
+        name: "North Myrtle Beach",
+        blurb: "Coastal lifestyle with quick access to dining, golf, and the water.",
+        chips: ["Coastal", "Golf", "Dining"],
+        bestFor: ["Snowbird → Full-Time", "Retiree"],
+        buildStyle: "Porches, storage, single-level options"
+      },
+      {
+        name: "Little River",
+        blurb: "Marina energy, quieter pace, and strong appeal for boaters.",
+        chips: ["Marinas", "Quieter", "Water access"],
+        bestFor: ["Snowbird → Full-Time", "Retiree"],
+        buildStyle: "Lock-and-leave, storage, outdoor living"
+      }
+    ];
+
+    const TALKING_POINTS = [
+      { t:"2026 buyers are planning ahead", d:"They’re choosing layouts that work now and still make sense in 10 years—single-level living is the new ‘luxury.’" },
+      { t:"Outdoor living sells the lifestyle", d:"Covered porches, screened lanais, and patios are replacing formal rooms as the ‘most-used’ space." },
+      { t:"Right-sized beats oversized", d:"Many relocations target efficient 1,700–2,400 sq ft plans: open kitchens, flex rooms, and storage." },
+      { t:"New construction reduces friction", d:"Distance buyers love predictable maintenance, modern insurance compliance, and builder warranties." },
+      { t:"Location is a lifestyle decision", d:"Carolina Forest for convenience, Market Common for walkability, and Little River/NMB for the coastal pace." }
+    ];
+
+    // -----------------------------
+    // DOM helpers
+    // -----------------------------
+
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function toast(msg){
+      const el = $("#toast");
+      $("#toastText").textContent = msg;
+      el.style.display = "flex";
+      clearTimeout(toast._t);
+      toast._t = setTimeout(()=>{ el.style.display = "none"; }, 2400);
+    }
+
+    // -----------------------------
+    // Render: Personas
+    // -----------------------------
+
+    let activePersona = "empty";
+
+    function renderPersona(){
+      const p = PERSONAS[activePersona];
+      $("#activePersonaTag").innerHTML = `Active: <strong style="color:var(--text)">${p.name}</strong>`;
+
+      const details = document.createElement("div");
+      details.className = "box";
+      details.innerHTML = `
+        <div class="title">
+          <strong>${p.name}</strong>
+          <span>${p.tagline}</span>
+        </div>
+        <ul>
+          ${p.bullets.map(b=>`<li>${b}</li>`).join("")}
+        </ul>
+      `;
+
+      const holder = $("#personaDetails");
+      holder.innerHTML = "";
+      holder.appendChild(details);
+
+      $("#horizonTag").textContent = p.horizonLabel;
+      $("#horizonBar").style.width = clamp(p.horizonPct, 8, 95) + "%";
+
+      renderBars();
+      updateScore();
+    }
+
+    // -----------------------------
+    // Render: Features
+    // -----------------------------
+
+    function renderFeatures(){
+      const list = $("#featureList");
+      list.innerHTML = "";
+
+      FEATURES.forEach(f => {
+        const label = document.createElement("label");
+        label.className = "check";
+        label.setAttribute("for", f.id);
+        label.innerHTML = `
+          <input type="checkbox" id="${f.id}" data-weight="${f.weight}" />
+          <div>
+            <div class="t">${f.title}</div>
+            <div class="d">${f.desc}</div>
+          </div>
+        `;
+        list.appendChild(label);
+      });
+
+      // listen
+      $$("#featureList input[type=checkbox]").forEach(cb=>{
+        cb.addEventListener("change", updateScore);
+      });
+    }
+
+    function updateScore(){
+      const checks = $$("#featureList input[type=checkbox]");
+      const total = FEATURES.reduce((s,f)=>s+f.weight,0);
+      const picked = checks.reduce((s,cb)=> s + (cb.checked ? Number(cb.dataset.weight) : 0), 0);
+
+      // Persona adjustment: boost score slightly if the selection matches top persona priorities.
+      const pr = PERSONAS[activePersona].priorities;
+      const boostKeys = {
+        single: "Single-level living",
+        porch: "Outdoor living",
+        office: "Home office",
+        amenities: "Community amenities",
+        efficient: "Low maintenance",
+        zero: "Single-level living",
+        shower: "Single-level living",
+        laundry: "Single-level living",
+        storage: "Low maintenance",
+        smart: "Low maintenance"
+      };
+
+      let boost = 0;
+      checks.forEach(cb=>{
+        if(!cb.checked) return;
+        const key = boostKeys[cb.id];
+        const val = pr[key] ?? 50;
+        // high persona priority gives up to +6 points total
+        boost += (val >= 80) ? 0.9 : (val >= 65) ? 0.6 : (val >= 50) ? 0.35 : 0.15;
+      });
+
+      const rawPct = (picked / total) * 100;
+      const pct = clamp(Math.round(rawPct + boost), 0, 100);
+      $("#scoreTag").innerHTML = `Match Score: <strong style="color:var(--text)">${pct}%</strong>`;
+    }
+
+    // -----------------------------
+    // Render: Priority bars
+    // -----------------------------
+
+    function renderBars(){
+      const pr = PERSONAS[activePersona].priorities;
+      const keys = Object.keys(pr);
+
+      const bars = $("#bars");
+      bars.innerHTML = "";
+
+      keys.forEach(k => {
+        const row = document.createElement("div");
+        row.className = "barRow";
+        const v = clamp(pr[k], 0, 100);
+        row.innerHTML = `
+          <div class="label">${k}</div>
+          <div class="bar" aria-label="${k} bar">
+            <div style="width:${v}%"></div>
+          </div>
+          <div class="value">${v}%</div>
+        `;
+        bars.appendChild(row);
+      });
+
+      $("#priorityNote").textContent = `Profile lens: ${PERSONAS[activePersona].name}`;
+    }
+
+    // -----------------------------
+    // Render: Places
+    // -----------------------------
+
+    function renderPlaces(){
+      const grid = $("#placeGrid");
+      grid.innerHTML = "";
+
+      PLACES.forEach((pl, idx) => {
+        const el = document.createElement("button");
+        el.type = "button";
+        el.className = "place";
+        el.style.textAlign = "left";
+        el.setAttribute("aria-label", `Open details for ${pl.name}`);
+
+        el.innerHTML = `
+          <div class="top">
+            <div>
+              <h3>${pl.name}</h3>
+              <p>${pl.blurb}</p>
+            </div>
+            <span class="tag">Tap</span>
+          </div>
+          <div class="chips">
+            ${pl.chips.map(c=>`<span class="chip">${c}</span>`).join("")}
+          </div>
+        `;
+
+        el.addEventListener("click", () => {
+          const message = `${pl.name}: best for ${pl.bestFor.join(" + ")}. Typical build vibe: ${pl.buildStyle}.`;
+          toast(message);
+        });
+
+        grid.appendChild(el);
+      });
+    }
+
+    // -----------------------------
+    // Render: talking points
+    // -----------------------------
+
+    function renderTalkingPoints(){
+      const holder = $("#talkingPoints");
+      holder.innerHTML = "";
+
+      TALKING_POINTS.forEach(tp => {
+        const el = document.createElement("div");
+        el.className = "check";
+        el.style.cursor = "default";
+        el.innerHTML = `
+          <div style="width:100%">
+            <div class="t">${tp.t}</div>
+            <div class="d">${tp.d}</div>
+          </div>
+        `;
+        holder.appendChild(el);
+      });
+    }
+
+    // -----------------------------
+    // Interactions
+    // -----------------------------
+
+    function setPersona(key){
+      activePersona = key;
+      $$(".segbtn").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.persona === key)));
+      renderPersona();
+      toast(`Profile set: ${PERSONAS[key].name}`);
+    }
+
+    $$(".segbtn").forEach(btn => {
+      btn.addEventListener("click", () => setPersona(btn.dataset.persona));
+    });
+
+    // Smooth jumps
+    $("#jumpFeatures").addEventListener("click", () => {
+      $("#features").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    $("#jumpPlaces").addEventListener("click", () => {
+      $("#places").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    // Modal
+    const modalBack = $("#modalBack");
+    function openModal(){ modalBack.style.display = "flex"; $("#closeModal").focus(); }
+    function closeModal(){ modalBack.style.display = "none"; $("#btnSources").focus(); }
+
+    $("#btnSources").addEventListener("click", openModal);
+    $("#closeModal").addEventListener("click", closeModal);
+    modalBack.addEventListener("click", (e)=>{ if(e.target === modalBack) closeModal(); });
+
+    // Keyboard access for pills
+    $$(".pill").forEach(p => {
+      p.addEventListener("keydown", (e)=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          p.click();
+        }
+      });
+    });
+
+    // Copy embed snippet
+    $("#btnShare").addEventListener("click", async () => {
+      const snippet = `<!-- Embed: Snow-to-Coastal-SC Interactive Infographic -->\n<iframe src=\"https://YOURDOMAIN.com/path/snow-to-coastal-sc-infographic.html\" style=\"width:100%;height:1200px;border:0;border-radius:16px;overflow:hidden\" loading=\"lazy\"></iframe>`;
+      try{
+        await navigator.clipboard.writeText(snippet);
+        toast("Embed snippet copied!");
+      }catch(err){
+        toast("Copy blocked—select & copy manually from console.");
+        console.log(snippet);
+      }
+    });
+
+    // Reset
+    $("#btnReset").addEventListener("click", () => {
+      $$("#featureList input[type=checkbox]").forEach(cb => cb.checked = false);
+      setPersona("empty");
+      updateScore();
+      toast("Reset complete");
+    });
+
+    // Escape to close modal
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && modalBack.style.display === "flex") closeModal();
+    });
+
+    // -----------------------------
+    // Init
+    // -----------------------------
+
+    renderFeatures();
+    renderBars();
+    renderPlaces();
+    renderTalkingPoints();
+    renderPersona();
+  </script>
+</body>
+</html>

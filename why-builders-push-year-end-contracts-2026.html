@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Why Builders Push Year-End Contracts — Interactive Infographic</title>
+  <meta name="description" content="An interactive infographic showing why builders push year-end contracts and when incentives actually save you money—built for Myrtle Beach & the Grand Strand." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b2e;
+      --card2:#0f1930;
+      --text:#e9eefc;
+      --muted:#b7c2e3;
+      --line:rgba(255,255,255,.12);
+      --good:#39d98a;
+      --warn:#ffcc66;
+      --bad:#ff6b6b;
+      --accent:#79b8ff;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 25% 10%, #162246 0%, var(--bg) 55%, #070c16 100%);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      padding: 42px 20px 18px;
+      max-width: 1120px;
+      margin: 0 auto;
+      position:relative;
+    }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      color:var(--muted);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(6px);
+      font-size: 13px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(180deg, var(--accent), #5bf3ff);
+      box-shadow: 0 0 0 6px rgba(121,184,255,.15);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(28px, 3.3vw, 44px);
+      letter-spacing: -0.02em;
+      line-height:1.05;
+    }
+    .sub{
+      max-width: 880px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.45vw, 18px);
+      margin: 0 0 18px;
+    }
+    .topbar{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    main{
+      max-width:1120px;
+      margin: 0 auto;
+      padding: 18px 20px 70px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      main{grid-template-columns: 1fr; }
+      .sticky{position:relative!important; top:auto!important;}
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      background: rgba(0,0,0,.12);
+    }
+    .card .hd h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .card .hd .hint{
+      color: var(--muted);
+      font-size: 12px;
+      text-align:right;
+    }
+    .card .bd{ padding: 16px; }
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    @media(max-width:680px){ .grid2{grid-template-columns:1fr;} }
+    .mini{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .mini h3{
+      margin:0 0 6px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight:600;
+    }
+    .bigNum{
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .muted{color:var(--muted)}
+    .row{display:flex; gap:10px; align-items:center; justify-content:space-between;}
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media(max-width:720px){ .controls{grid-template-columns:1fr;} }
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input[type="range"]{ width:100%; }
+    input[type="number"], input[type="text"]{
+      width:100%;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      padding: 10px 10px;
+      outline:none;
+      font-size: 14px;
+    }
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap;}
+    button{
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px;
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      font-weight: 650;
+      font-size: 13px;
+    }
+    button:hover{ background: rgba(255,255,255,.10); }
+    button:active{ transform: translateY(1px); }
+    button.primary{
+      background: linear-gradient(180deg, rgba(121,184,255,.25), rgba(121,184,255,.08));
+      border-color: rgba(121,184,255,.45);
+    }
+    button.ghost{
+      background: transparent;
+    }
+    .tabs{
+      display:flex;
+      gap:8px;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,.10);
+      flex-wrap:wrap;
+    }
+    .tab{
+      border-radius: 999px;
+      padding: 8px 10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tab[aria-selected="true"]{
+      color: var(--text);
+      border-color: rgba(121,184,255,.45);
+      background: rgba(121,184,255,.14);
+    }
+    .panel{display:none}
+    .panel.active{display:block}
+
+    /* Tactic cards (not dropdowns) */
+    .tacticGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media(max-width:960px){ .tacticGrid{grid-template-columns: repeat(2,1fr);} }
+    @media(max-width:560px){ .tacticGrid{grid-template-columns: 1fr;} }
+    .tactic{
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      padding: 12px;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      min-height: 118px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .tactic:hover{ transform: translateY(-1px); border-color: rgba(121,184,255,.35); }
+    .tactic .tag{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+      margin-bottom: 8px;
+    }
+    .tactic h4{ margin: 0 0 8px; font-size: 14px; letter-spacing:-0.01em; }
+    .tactic p{ margin:0; color: var(--muted); font-size: 13px; }
+    .tactic .reveal{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255,255,255,.18);
+      display:none;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .tactic[aria-expanded="true"] .reveal{display:block}
+    .tactic[aria-expanded="true"]{ background: rgba(121,184,255,.10); border-color: rgba(121,184,255,.55); }
+
+    /* Sticky side panel */
+    .sticky{
+      position: sticky;
+      top: 14px;
+    }
+
+    /* Pressure meter */
+    .meter{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .meter > div{
+      height:100%;
+      width: 40%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--good), var(--warn), var(--bad));
+      filter: saturate(1.05);
+      transition: width .22s ease;
+    }
+    .status{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
+      gap: 10px;
+    }
+    .badge{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(0,0,0,.14);
+      white-space:nowrap;
+    }
+    .badge.good{ border-color: rgba(57,217,138,.45); color: rgba(57,217,138,.95); background: rgba(57,217,138,.12);}
+    .badge.warn{ border-color: rgba(255,204,102,.45); color: rgba(255,204,102,.95); background: rgba(255,204,102,.12);}
+    .badge.bad{  border-color: rgba(255,107,107,.45); color: rgba(255,107,107,.95); background: rgba(255,107,107,.12);}
+
+    /* Simple chart */
+    .chart{
+      width:100%;
+      height: 160px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      padding: 10px;
+    }
+    .fine{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .footerNote{
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .callout{
+      border-left: 3px solid rgba(121,184,255,.7);
+      padding: 10px 12px;
+      background: rgba(121,184,255,.08);
+      border-radius: 14px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="kicker"><span class="dot" aria-hidden="true"></span> Interactive infographic • Myrtle Beach / Grand Strand • Built for 2026 relevance</div>
+  <h1>Why Builders Push Year-End Contracts<br/>— and when it actually saves you money</h1>
+  <p class="sub">
+    Not a dropdown in sight. Use the sliders, buttons, and cards to see how builder incentives (rate buydowns, closing costs, upgrades)
+    compare to price cuts—and how year-end pressure changes the play.
+  </p>
+  <div class="topbar">
+    <div class="pill">Post date: <strong>Dec 18, 2025</strong></div>
+    <div class="pill">Local lens: Carolina Forest • Market Common • Grand Strand</div>
+    <div class="pill">Tip: Toggle scenarios to see “best move”</div>
+  </div>
+</header>
+
+<main>
+  <!-- LEFT: Content -->
+  <section class="card" id="interactive">
+    <div class="hd">
+      <h2>1) The Deal Anatomy</h2>
+      <div class="hint">Tap cards • Slide controls • Compare outcomes</div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Infographic Tabs">
+      <div class="tab" role="tab" tabindex="0" aria-selected="true" data-tab="tactics">Builder Tactics</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="calculator">Savings Calculator</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="path">Decision Path</div>
+    </div>
+
+    <div class="bd">
+      <!-- PANEL: TACTICS -->
+      <div class="panel active" id="panel-tactics">
+        <p class="muted" style="margin-top:0">
+          Builders push year-end contracts because contracts can help them hit annual targets and reduce carrying costs.
+          These are the most common plays you’ll see in Myrtle Beach new construction—tap each card to reveal what it usually means for you.
+        </p>
+
+        <div class="tacticGrid" id="tacticGrid">
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="warn">
+            <div class="tag">Deadline pressure</div>
+            <h4>“Incentive expires Dec 31.”</h4>
+            <p>Creates urgency—even when inventory is the real issue.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Incentives often reset or rebrand in January. The deadline matters most when the builder is closing out year-end volume.
+              <br/><br/><strong>What to do:</strong> Ask for the incentive sheet in writing + compare lender fees/rates.
+            </div>
+          </div>
+
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="good">
+            <div class="tag">Upfront cash</div>
+            <h4>Closing cost credit</h4>
+            <p>Feels like “free money.” It can be… if the rate isn’t inflated.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Credits often require the builder’s lender. The win is real only if the total loan cost is competitive.
+              <br/><br/><strong>What to do:</strong> Compare APR and total closing costs, not just the note rate.
+            </div>
+          </div>
+
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="good">
+            <div class="tag">Payment relief</div>
+            <h4>Rate buydown (temp or perm)</h4>
+            <p>Can save a lot—especially if you refinance later.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Temporary buydowns help cash flow early. Permanent buydowns reduce payment for the life of the loan.
+              <br/><br/><strong>What to do:</strong> Run both scenarios: “stay 7+ years” vs “refi in 2–3.”
+            </div>
+          </div>
+
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="warn">
+            <div class="tag">Price protection</div>
+            <h4>“We don’t cut prices.”</h4>
+            <p>Builders prefer incentives to protect comps and appraisals.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Incentives can be easier to approve than price cuts. That doesn’t mean the home is priced right.
+              <br/><br/><strong>What to do:</strong> Compare against recent resales + other spec homes nearby.
+            </div>
+          </div>
+
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="bad">
+            <div class="tag">Contract leverage</div>
+            <h4>One-sided contract terms</h4>
+            <p>Deadlines matter less than what you’re signing.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Some builder contracts limit remedies if timelines slip or specs change.
+              <br/><br/><strong>What to do:</strong> Review contingency language, deposit terms, and inspection rights before you “lock anything in.”
+            </div>
+          </div>
+
+          <div class="tactic" role="button" tabindex="0" aria-expanded="false" data-impact="warn">
+            <div class="tag">Upgrade sparkle</div>
+            <h4>“Free upgrades”</h4>
+            <p>Great for resale appeal—unless the base price crept up.</p>
+            <div class="reveal">
+              <strong>Reality:</strong> Upgrades add livability and marketability, but they’re not cash. If you might sell in 3–5 years, focus on timeless items.
+              <br/><br/><strong>What to do:</strong> Prioritize flooring, kitchen durability, and layout over niche finishes.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          Local note: In winter, builder foot traffic can dip across the <strong>Grand Strand</strong>.
+          That’s why spec inventory in places like <strong>Carolina Forest</strong> may come with the loudest “year-end” promotions.
+        </div>
+      </div>
+
+      <!-- PANEL: CALCULATOR -->
+      <div class="panel" id="panel-calculator">
+        <p class="muted" style="margin-top:0">
+          Use this to compare three “builder deal” shapes: <strong>price cut</strong>, <strong>closing cost credit</strong>, and <strong>rate buydown</strong>.
+          It estimates monthly payment and first-year cash impact. (This is an educational model, not lender advice.)
+        </p>
+
+        <div class="controls">
+          <div class="mini">
+            <label for="homePrice">Home price</label>
+            <input id="homePrice" type="number" min="100000" step="1000" value="425000" />
+            <div class="fine">Try typical new construction ranges for Myrtle Beach / Carolina Forest.</div>
+          </div>
+          <div class="mini">
+            <label for="downPct">Down payment (%)</label>
+            <input id="downPct" type="range" min="0" max="30" value="10" />
+            <div class="row"><span class="muted">0%</span><span class="kbd"><span id="downPctVal">10</span>%</span><span class="muted">30%</span></div>
+          </div>
+
+          <div class="mini">
+            <label for="rate">Interest rate (%)</label>
+            <input id="rate" type="range" min="4" max="9" step="0.05" value="6.75" />
+            <div class="row"><span class="muted">4%</span><span class="kbd"><span id="rateVal">6.75</span>%</span><span class="muted">9%</span></div>
+          </div>
+
+          <div class="mini">
+            <label for="term">Loan term (years)</label>
+            <div class="btnrow">
+              <button class="primary" data-term="30" aria-pressed="true">30</button>
+              <button class="ghost" data-term="20" aria-pressed="false">20</button>
+              <button class="ghost" data-term="15" aria-pressed="false">15</button>
+            </div>
+            <div class="fine">Payment estimates assume fixed-rate amortization.</div>
+          </div>
+
+          <div class="mini">
+            <label for="dealType">Deal type</label>
+            <div class="btnrow" id="dealButtons">
+              <button class="primary" data-deal="closing" aria-pressed="true">Closing cost credit</button>
+              <button class="ghost" data-deal="price" aria-pressed="false">Price cut</button>
+              <button class="ghost" data-deal="buydown" aria-pressed="false">Rate buydown</button>
+            </div>
+            <div class="fine">No dropdowns. Just punchy buttons.</div>
+          </div>
+
+          <div class="mini" id="dealInputWrap">
+            <label for="dealValue">Deal value ($)</label>
+            <input id="dealValue" type="number" min="0" step="500" value="15000" />
+            <div class="fine" id="dealHelp">Closing credit reduces cash-to-close in this model.</div>
+          </div>
+        </div>
+
+        <div class="grid2" style="margin-top:12px;">
+          <div class="mini">
+            <h3>Estimated monthly payment (P&I)</h3>
+            <p class="bigNum" id="monthlyPI">$0</p>
+            <p class="muted" style="margin:6px 0 0">Compared against “no-deal” baseline.</p>
+          </div>
+          <div class="mini">
+            <h3>First-year advantage estimate</h3>
+            <p class="bigNum" id="firstYear">$0</p>
+            <p class="muted" style="margin:6px 0 0">Cash-to-close + 12 payments vs baseline.</p>
+          </div>
+        </div>
+
+        <div class="mini" style="margin-top:12px;">
+          <h3>Visual comparison</h3>
+          <canvas class="chart" id="chart" width="800" height="260" aria-label="Comparison chart" role="img"></canvas>
+          <div class="fine">Bars show baseline vs your selected deal (payment + first-year). Not taxes/insurance/HOA.</div>
+        </div>
+
+        <div class="footerNote">
+          Sources to link alongside this tool:
+          <a href="https://www.bankrate.com/mortgages/" target="_blank" rel="noopener">Bankrate mortgages</a> •
+          <a href="https://www.nahb.org/news" target="_blank" rel="noopener">NAHB news</a> •
+          <a href="https://www.consumerfinance.gov/owning-a-home/" target="_blank" rel="noopener">CFPB homebuying</a>
+        </div>
+      </div>
+
+      <!-- PANEL: DECISION PATH -->
+      <div class="panel" id="panel-path">
+        <p class="muted" style="margin-top:0">
+          Pick your situation. We’ll score whether a year-end contract is likely a true savings play or mostly pressure.
+          (This is a heuristic—real-world comps and contract terms still matter.)
+        </p>
+
+        <div class="mini">
+          <h3>Choose your situation</h3>
+          <div class="btnrow" id="pathButtons">
+            <button class="primary" data-path="spec">Buying a completed spec home</button>
+            <button class="ghost" data-path="build">Building from scratch</button>
+            <button class="ghost" data-path="movefast">Need to move within 45 days</button>
+            <button class="ghost" data-path="stretch">Budget feels “tight”</button>
+            <button class="ghost" data-path="refi">Plan to refinance in 2–3 years</button>
+          </div>
+          <div class="fine">Tap multiple. Watch the right-side meter react.</div>
+        </div>
+
+        <div class="grid2" style="margin-top:12px;">
+          <div class="mini">
+            <h3>Your “Best Move”</h3>
+            <p id="bestMove" style="margin:0; font-size:15px;">
+              Select a situation above.
+            </p>
+          </div>
+          <div class="mini">
+            <h3>What to verify before signing</h3>
+            <ul class="muted" style="margin:0; padding-left:18px; font-size:13px;">
+              <li>Incentive sheet in writing + expiration terms</li>
+              <li>Loan estimate vs outside lender (APR + fees)</li>
+              <li>Spec home comps nearby (resale + other specs)</li>
+              <li>Deposit/contingency clauses & inspection rights</li>
+              <li>Timeline risk & “material change” language</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          Coastal practical tip: If you’re shopping around <strong>Market Common</strong>, lifestyle value is real—but don’t let it blur pricing discipline.
+          The best “deal” is the one you can comfortably carry through 2026 and beyond.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: Sticky meter + summary -->
+  <aside class="card sticky" aria-label="Deal meter">
+    <div class="hd">
+      <h2>2) Pressure Meter</h2>
+      <div class="hint">Updates as you interact</div>
+    </div>
+    <div class="bd">
+      <div class="meter" aria-hidden="true"><div id="meterFill"></div></div>
+      <div class="status">
+        <div class="badge" id="meterLabel">Balanced</div>
+        <div class="badge" id="meterScore">Score: 50/100</div>
+      </div>
+
+      <div class="mini" style="margin-top:12px;">
+        <h3>What this score means</h3>
+        <p class="muted" style="margin:0" id="meterExplain">
+          This is a blended read of your deal choice + scenario flags. Higher score means the deal looks more like real savings than pure urgency.
+        </p>
+      </div>
+
+      <div class="mini" style="margin-top:12px;">
+        <h3>Quick “Math First” checklist</h3>
+        <div class="muted" style="font-size:13px;">
+          <div class="row"><span>Compare APR, not just rate</span><span class="kbd">✓</span></div>
+          <div class="row"><span>Verify comps within 1–3 miles</span><span class="kbd">✓</span></div>
+          <div class="row"><span>Get incentives in writing</span><span class="kbd">✓</span></div>
+          <div class="row"><span>Read the timeline clause</span><span class="kbd">✓</span></div>
+        </div>
+      </div>
+
+      <div class="footerNote">
+        Built for Carolina Crafted Homes.
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script>
+  // ---------- Tabs ----------
+  const tabs = document.querySelectorAll('.tab');
+  const panels = {
+    tactics: document.getElementById('panel-tactics'),
+    calculator: document.getElementById('panel-calculator'),
+    path: document.getElementById('panel-path')
+  };
+
+  function setTab(name){
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+    Object.entries(panels).forEach(([k, el]) => el.classList.toggle('active', k === name));
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => setTab(t.dataset.tab));
+    t.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTab(t.dataset.tab); }
+    });
+  });
+
+  // ---------- Tactic cards (tap-to-reveal; not dropdown) ----------
+  const tacticCards = document.querySelectorAll('.tactic');
+  tacticCards.forEach(card => {
+    const toggle = () => {
+      const expanded = card.getAttribute('aria-expanded') === 'true';
+      card.setAttribute('aria-expanded', String(!expanded));
+      // Nudge meter based on opened card impact
+      bumpMeter(card.dataset.impact, !expanded ? +1 : -1);
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  // ---------- Calculator ----------
+  const homePrice = document.getElementById('homePrice');
+  const downPct = document.getElementById('downPct');
+  const downPctVal = document.getElementById('downPctVal');
+  const rate = document.getElementById('rate');
+  const rateVal = document.getElementById('rateVal');
+  const dealValue = document.getElementById('dealValue');
+  const dealHelp = document.getElementById('dealHelp');
+  const monthlyPI = document.getElementById('monthlyPI');
+  const firstYear = document.getElementById('firstYear');
+  const chart = document.getElementById('chart');
+  const ctx = chart.getContext('2d');
+
+  let termYears = 30;
+  let dealType = 'closing'; // closing, price, buydown
+  let activePaths = new Set();
+
+  function money(n){
+    const s = Math.round(n).toString();
+    return '$' + s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function calcPayment(principal, annualRate, years){
+    const r = (annualRate/100)/12;
+    const n = years*12;
+    if(r === 0) return principal/n;
+    return principal * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+  }
+
+  function updateDealHelp(){
+    if(dealType === 'closing'){
+      dealHelp.textContent = 'Closing credit reduces cash-to-close in this model.';
+    } else if(dealType === 'price'){
+      dealHelp.textContent = 'Price cut reduces your loan amount (and payment) directly.';
+    } else {
+      dealHelp.textContent = 'Rate buydown reduces your interest rate in this model (permanent).';
+    }
+  }
+
+  function drawBars(data){
+    // data: [{label, a, b}] where a=baseline, b=deal
+    ctx.clearRect(0,0,chart.width,chart.height);
+
+    const pad = 20;
+    const w = chart.width - pad*2;
+    const h = chart.height - pad*2;
+
+    // find max
+    let maxV = 0;
+    data.forEach(d => { maxV = Math.max(maxV, d.a, d.b); });
+    maxV = maxV * 1.15;
+
+    // axes
+    ctx.globalAlpha = 0.5;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,.22)';
+    ctx.beginPath();
+    ctx.moveTo(pad, pad);
+    ctx.lineTo(pad, pad+h);
+    ctx.lineTo(pad+w, pad+h);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // bars
+    const groupW = w / data.length;
+    const barW = Math.min(56, groupW * 0.28);
+
+    data.forEach((d, i) => {
+      const xMid = pad + groupW*(i + 0.5);
+      const baseH = (d.a / maxV) * h;
+      const dealH = (d.b / maxV) * h;
+
+      // baseline
+      ctx.fillStyle = 'rgba(255,255,255,.20)';
+      ctx.fillRect(xMid - barW - 6, pad + (h - baseH), barW, baseH);
+
+      // deal
+      ctx.fillStyle = 'rgba(121,184,255,.45)';
+      ctx.fillRect(xMid + 6, pad + (h - dealH), barW, dealH);
+
+      // labels
+      ctx.fillStyle = 'rgba(233,238,252,.85)';
+      ctx.font = '12px ui-sans-serif, system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText(d.label, xMid, pad + h + 16);
+    });
+
+    // legend
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,.55)';
+    ctx.fillRect(pad, pad-10, 12, 8);
+    ctx.fillStyle = 'rgba(233,238,252,.75)';
+    ctx.fillText('Baseline', pad + 18, pad - 3);
+
+    ctx.fillStyle = 'rgba(121,184,255,.45)';
+    ctx.fillRect(pad + 92, pad-10, 12, 8);
+    ctx.fillStyle = 'rgba(233,238,252,.75)';
+    ctx.fillText('Your deal', pad + 110, pad - 3);
+  }
+
+  function recompute(){
+    downPctVal.textContent = downPct.value;
+    rateVal.textContent = Number(rate.value).toFixed(2);
+
+    const price = Number(homePrice.value || 0);
+    const dp = price * (Number(downPct.value)/100);
+    const baseLoan = Math.max(0, price - dp);
+    const baseRate = Number(rate.value);
+
+    // Baseline
+    const basePayment = calcPayment(baseLoan, baseRate, termYears);
+
+    // Deal scenario
+    let dealLoan = baseLoan;
+    let dealRate = baseRate;
+    let dealCashAdv = 0;
+
+    const dv = Number(dealValue.value || 0);
+
+    if(dealType === 'closing'){
+      dealCashAdv = dv; // less cash to close (simplified)
+    } else if(dealType === 'price'){
+      dealLoan = Math.max(0, baseLoan - dv);
+    } else if(dealType === 'buydown'){
+      // Convert $ value to rate reduction heuristically:
+      // 1 point ~ 1% of loan amount, but builders fund buydowns via credits;
+      // We'll map dv to basis points capped for realism.
+      const maxDrop = 1.00; // cap at 1.00% drop in this model
+      const estDrop = Math.min(maxDrop, (dv / Math.max(1, baseLoan)) * 10); // heuristic
+      dealRate = Math.max(0.01, baseRate - estDrop);
+    }
+
+    const dealPayment = calcPayment(dealLoan, dealRate, termYears);
+
+    // First-year advantage: (baseline cash + 12 payments) - (deal cash + 12 payments)
+    // baseline cash assumed 0 here; deal cash adv positive reduces out-of-pocket
+    const firstYearAdv = (0 + basePayment*12) - ((0 - dealCashAdv) + dealPayment*12);
+
+    monthlyPI.textContent = money(dealPayment) + " / mo";
+    firstYear.textContent = (firstYearAdv >= 0 ? "" : "−") + money(Math.abs(firstYearAdv));
+
+    drawBars([
+      {label:"Monthly", a: basePayment, b: dealPayment},
+      {label:"First-year", a: basePayment*12, b: dealPayment*12 - dealCashAdv}
+    ]);
+
+    // Meter influence from calculator
+    // If deal yields positive first-year advantage: +; else -
+    setMeterBaseFromCalculator(firstYearAdv, dealType);
+  }
+
+  // Term buttons
+  document.querySelectorAll('button[data-term]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      termYears = Number(btn.dataset.term);
+      document.querySelectorAll('button[data-term]').forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('primary', on);
+        b.classList.toggle('ghost', !on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      recompute();
+    });
+  });
+
+  // Deal buttons
+  document.querySelectorAll('#dealButtons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      dealType = btn.dataset.deal;
+      document.querySelectorAll('#dealButtons button').forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('primary', on);
+        b.classList.toggle('ghost', !on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      // Adjust default deal values to feel realistic
+      if(dealType === 'closing' && Number(dealValue.value) < 8000) dealValue.value = 15000;
+      if(dealType === 'price' && Number(dealValue.value) < 8000) dealValue.value = 10000;
+      if(dealType === 'buydown' && Number(dealValue.value) < 8000) dealValue.value = 18000;
+      updateDealHelp();
+      recompute();
+    });
+  });
+
+  [homePrice, downPct, rate, dealValue].forEach(el => el.addEventListener('input', recompute));
+
+  // ---------- Decision Path ----------
+  const bestMove = document.getElementById('bestMove');
+  document.querySelectorAll('#pathButtons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.path;
+      const isOn = activePaths.has(key);
+      if(isOn) activePaths.delete(key); else activePaths.add(key);
+
+      btn.classList.toggle('primary', !isOn);
+      btn.classList.toggle('ghost', isOn);
+      btn.setAttribute('aria-pressed', String(!isOn));
+
+      updatePathAdvice();
+      updateMeterFromPath();
+    });
+  });
+
+  function updatePathAdvice(){
+    if(activePaths.size === 0){
+      bestMove.textContent = "Select a situation above.";
+      return;
+    }
+    const flags = [...activePaths];
+
+    // Simple decision logic
+    const hasSpec = flags.includes('spec');
+    const hasBuild = flags.includes('build');
+    const hasMoveFast = flags.includes('movefast');
+    const hasStretch = flags.includes('stretch');
+    const hasRefi = flags.includes('refi');
+
+    let advice = [];
+
+    if(hasSpec) advice.push("Lean into negotiation: completed spec homes often come with the most flexible incentives at year-end.");
+    if(hasBuild) advice.push("Protect yourself: focus on contract terms, allowances, and timeline language more than shiny incentives.");
+    if(hasMoveFast) advice.push("Prioritize certainty: a close-to-finished home + clear lender terms beats a risky timeline promise.");
+    if(hasStretch) advice.push("Don’t buy a payment problem: incentives help, but only if the baseline price is right and cash reserves stay intact.");
+    if(hasRefi) advice.push("A temporary buydown can be useful—if you genuinely plan and qualify to refinance later.");
+
+    bestMove.textContent = advice.join(" ");
+  }
+
+  // ---------- Meter ----------
+  const meterFill = document.getElementById('meterFill');
+  const meterLabel = document.getElementById('meterLabel');
+  const meterScore = document.getElementById('meterScore');
+  const meterExplain = document.getElementById('meterExplain');
+
+  let meter = 50; // 0..100
+  let meterCalcBias = 0;
+  let meterPathBias = 0;
+  let meterTacticBias = 0;
+
+  function clamp(v){ return Math.max(0, Math.min(100, v)); }
+
+  function setMeter(){
+    meter = clamp(50 + meterCalcBias + meterPathBias + meterTacticBias);
+    meterFill.style.width = meter + '%';
+    meterScore.textContent = `Score: ${Math.round(meter)}/100`;
+
+    meterLabel.classList.remove('good','warn','bad');
+    let label = "Balanced";
+    let explain = "This is a blended read of your deal choice + scenario flags. Higher score means the deal looks more like real savings than pure urgency.";
+
+    if(meter >= 67){
+      label = "Likely savings";
+      meterLabel.classList.add('good');
+      explain = "Looks like the incentives improve your position without relying on pressure. Still verify comps + contract terms.";
+    } else if(meter <= 38){
+      label = "Mostly pressure";
+      meterLabel.classList.add('bad');
+      explain = "The configuration leans toward urgency or risk. Slow down and compare loan estimates + nearby comps before committing.";
+    } else {
+      label = "Mixed";
+      meterLabel.classList.add('warn');
+      explain = "Some real value here, but it depends on pricing discipline and lender terms. Run the math and review the contract.";
+    }
+
+    meterLabel.textContent = label;
+    meterExplain.textContent = explain;
+  }
+
+  function bumpMeter(impact, dir){
+    // Opening a "good" card nudges up; "bad" nudges down.
+    const step = 2.5 * dir;
+    if(impact === 'good') meterTacticBias = clamp(meterTacticBias + step) - 50; // incorrect
+  }
+
+  // Fix bump logic: keep tactic bias within -18..+18
+  function bumpMeter(impact, dir){
+    const delta = 3.0 * dir;
+    if(impact === 'good') meterTacticBias += delta;
+    if(impact === 'warn') meterTacticBias += (delta * 0.3);
+    if(impact === 'bad')  meterTacticBias -= delta;
+
+    meterTacticBias = Math.max(-18, Math.min(18, meterTacticBias));
+    setMeter();
+  }
+
+  function setMeterBaseFromCalculator(firstYearAdv, dealType){
+    // If first-year advantage is positive: + up to +22
+    // Deal type modifiers: price cut stable, closing moderate, buydown depends on intention
+    const adv = firstYearAdv;
+    let bias = 0;
+
+    // scale: $0 => 0; $10k => ~+10; $25k => ~+18
+    const scaled = Math.max(-22, Math.min(22, (adv / 25000) * 18));
+    bias += scaled;
+
+    if(dealType === 'price') bias += 3;
+    if(dealType === 'closing') bias += 1;
+    if(dealType === 'buydown') bias += 0; // neutral until path says refi/stay
+
+    meterCalcBias = Math.max(-24, Math.min(24, bias));
+    setMeter();
+  }
+
+  function updateMeterFromPath(){
+    const flags = [...activePaths];
+    let bias = 0;
+
+    if(flags.includes('spec')) bias += 7;
+    if(flags.includes('movefast')) bias += 3;
+    if(flags.includes('build')) bias -= 4; // higher contract/timeline risk
+    if(flags.includes('stretch')) bias -= 10;
+
+    // buydown + refi synergy
+    if(flags.includes('refi') && dealType === 'buydown') bias += 6;
+    if(!flags.includes('refi') && dealType === 'buydown') bias -= 2;
+
+    meterPathBias = Math.max(-22, Math.min(22, bias));
+    setMeter();
+  }
+
+  // When deal type changes, re-evaluate path synergy
+  document.querySelectorAll('#dealButtons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateMeterFromPath();
+    });
+  });
+
+  // Init
+  updateDealHelp();
+  recompute();
+  setMeter();
+</script>
+</body>
+</html>
